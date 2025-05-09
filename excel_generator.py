@@ -7,6 +7,8 @@ from llama_index.core import SimpleDirectoryReader
 import openai
 from config import OPENAI_API_KEY
 from web_search import google_search
+import streamlit as st
+import openai
 
 def generate_product_details(brand, item_number, name, id1):
 
@@ -20,7 +22,7 @@ def generate_product_details(brand, item_number, name, id1):
     for r in results
     )
 
-    openai.api_key = OPENAI_API_KEY
+    openai.api_key = st.secrets["OPENAI_API_KEY"]
     if not openai.api_key or openai.api_key == "your-api-key-here":
         raise RuntimeError("Invalid OpenAI API")
 
