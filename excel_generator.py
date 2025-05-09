@@ -11,15 +11,15 @@ import openai
 
 def generate_product_details(brand, item_number, name, id1):
 
-    # #Build a search query based on the product identifiers
-    # search_q = f"{brand} {item_number} {name}"
-    # results = google_search(search_q, num_results=8)
+    #Build a search query based on the product identifiers
+    search_q = f"{brand} {item_number} {name}"
+    results = google_search(search_q, num_results=8)
 
-    # #Turn them into a little “browser context” blob
-    # browser_context = "\n".join(
-    # f"- {r['title']}: {r['snippet']} ({r['link']})"
-    # for r in results
-    # )
+    #Turn them into a little “browser context” blob
+    browser_context = "\n".join(
+    f"- {r['title']}: {r['snippet']} ({r['link']})"
+    for r in results
+    )
 
     openai.api_key = st.secrets["openai"]["api_key"]
     if not openai.api_key or openai.api_key == "your-api-key-here":
@@ -33,7 +33,7 @@ def generate_product_details(brand, item_number, name, id1):
     - Name: {name}
     - ID: {id1}
     
-    You have this local documentation (RAG context) plus these web snippets:
+    You have this local documentation (RAG context) plus these web snippets: {browser_context}
 
     Please generate the following information in JSON format:
 
