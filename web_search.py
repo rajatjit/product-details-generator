@@ -1,5 +1,5 @@
 import requests
-from config import GOOGLE_API_KEY, GOOGLE_CSE_ID
+import streamlit as st
 
 def google_search(query, num_results):
     """
@@ -7,8 +7,8 @@ def google_search(query, num_results):
     """
     url = "https://www.googleapis.com/customsearch/v1"
     params = {
-        "key": GOOGLE_API_KEY,
-        "cx": GOOGLE_CSE_ID,
+        "key": st.secrets["GOOGLE_API_KEY"],
+        "cx": st.secrets["GOOGLE_CSE_ID"],
         "q": query,
         "num": num_results,
     }
