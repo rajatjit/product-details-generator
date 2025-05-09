@@ -1,5 +1,6 @@
 pandas
 llama_index.llms.openai
+llama_index.embeddings.openai
 llama_index.core
 openpyxl
 streamlit
