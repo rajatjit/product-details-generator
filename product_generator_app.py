@@ -10,6 +10,9 @@ st.markdown("""
 This app allows you to upload an Excel file with product details and then uses the OpenAI-powered function to generate detailed information for each product.  
 The output is provided as a downloadable Excel file.
 """)
+st.markdown("""
+Your spread sheet include these columns in the exact following sequence: Brand, Item number, Name, ID. With exact titles to each of these columns.
+""")
 
 # File uploader widget
 uploaded_file = st.file_uploader("Upload an Excel file", type=["xlsx"])
