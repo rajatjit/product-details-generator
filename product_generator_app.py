@@ -11,7 +11,7 @@ This app allows you to upload an Excel file with product details and then uses t
 The output is provided as a downloadable Excel file.
 """)
 st.markdown("""
-Your spreadsheet include these columns in the exact following sequence: Brand, Item number, Name, ID. With exact titles to each of these columns.
+Your spreadsheet should include these columns in the exact following sequence: Brand, Item number, Name, ID. With exact titles to each of these columns.
 """)
 
 # File uploader widget
