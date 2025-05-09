@@ -1,8 +1,6 @@
 import requests
 import streamlit as st
 
-
-
 def google_search(query, num_results):
     """
     Returns a list of {title, snippet, link} for the top num_results.
