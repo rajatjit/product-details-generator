@@ -1,9 +1,7 @@
 import json
 import re
-import chromadb
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import Settings, StorageContext, SimpleDirectoryReader, VectorStoreIndex
 import openai
 from config import OPENAI_API_KEY
@@ -59,21 +57,22 @@ def generate_product_details(brand, item_number, name, id1):
         max_tokens=3000
     )
     documents = SimpleDirectoryReader("./data/").load_data()
+    storage_context = StorageContext.from_defaults()
 
-    db = chromadb.PersistentClient(path="./chroma_db")
-    chroma_collection = db.get_or_create_collection("quickstart")
 
     Settings.embed_model = OpenAIEmbedding(
         model="text-embedding-ada-002",
         request_timeout=120
     )
 
-    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
-    storage_context = StorageContext.from_defaults(vector_store=vector_store)
     index = VectorStoreIndex.from_documents(
-        documents, storage_context=storage_context
+        documents=documents,
+        storage_context=storage_context
     )
-    query_engine = index.as_query_engine(llm=Settings.llm)
+    query_engine = index.as_query_engine(
+    similarity_top_k=5,
+    streaming=False
+    )
     
     try:
         response = query_engine.query(prompt)
