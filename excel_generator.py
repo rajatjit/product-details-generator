@@ -5,7 +5,6 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings, StorageContext, VectorStoreIndex
 from llama_index.core import SimpleDirectoryReader
 import openai
-from config import OPENAI_API_KEY
 from web_search import google_search
 import streamlit as st
 import openai
