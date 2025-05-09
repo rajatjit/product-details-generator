@@ -1,14 +1,16 @@
 import requests
 import streamlit as st
 
+
+
 def google_search(query, num_results):
     """
     Returns a list of {title, snippet, link} for the top num_results.
     """
     url = "https://www.googleapis.com/customsearch/v1"
     params = {
-        "key": st.secrets["GOOGLE_API_KEY"],
-        "cx": st.secrets["GOOGLE_CSE_ID"],
+        "key": st.secrets["google"]["api_key"],
+        "cx": st.secrets["google"]["cse_id"],
         "q": query,
         "num": num_results,
     }

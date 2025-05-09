@@ -21,7 +21,7 @@ def generate_product_details(brand, item_number, name, id1):
     for r in results
     )
 
-    openai.api_key = st.secrets["OPENAI_API_KEY"]
+    openai.api_key = st.secrets["openai"]["api_key"]
     if not openai.api_key or openai.api_key == "your-api-key-here":
         raise RuntimeError("Invalid OpenAI API")
 
