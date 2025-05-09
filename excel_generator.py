@@ -2,7 +2,8 @@ import json
 import re
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.core import Settings, StorageContext, SimpleDirectoryReader, VectorStoreIndex
+from llama_index.core import Settings, StorageContext, VectorStoreIndex
+from llama_index.core import SimpleDirectoryReader
 import openai
 from config import OPENAI_API_KEY
 from web_search import google_search
