@@ -11,12 +11,7 @@ This app allows you to upload an Excel file with product details and then uses t
 The output is provided as a downloadable Excel file.
 """)
 st.markdown(
-    """
-    <div style='background-color: yellow; padding: 10px;'>
-      <strong>Your spreadsheet should include these columns in the exact following sequence:</strong><br>
-      Brand, Item number, Name, ID (exact titles as mentioned).
-    </div>
-    """,
+    "<span style='color: orange;'>Your spreadsheet should include these columns in the exact following sequence: Brand, Item number, Name, ID with exact titles to each of these columns as mentioned.</span>",
     unsafe_allow_html=True
 )
 
