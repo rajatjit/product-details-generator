@@ -1,9 +1,7 @@
 pandas
-chromadb
 llama_index.core
 llama_index.embeddings.huggingface
 llama_index.llms.ollama
-llama_index.vector_stores.chroma
 llama_index.core
 openpyxl
 streamlit
