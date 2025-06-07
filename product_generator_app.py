@@ -4,6 +4,9 @@ import time
 import io
 from excel_generator import generate_product_details
 
+if 'output_excel' not in st.session_state:
+    st.session_state['output_excel'] = None
+
 st.title("Product Details Generator")
 
 st.markdown("""
@@ -101,10 +104,14 @@ if uploaded_file is not None:
             combined_df.to_excel(writer, index=False)
         output.seek(0)
 
+        st.session_state['output_excel'] = output.getvalue()
+
         st.success("Processing complete!")
-        st.download_button(
-            label="Download Output Excel File",
-            data=output,
-            file_name="output.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+
+if st.session_state['output_excel'] is not None:
+    st.download_button(
+        label="Download Output Excel File",
+        data=st.session_state['output_excel'],
+        file_name="output.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
